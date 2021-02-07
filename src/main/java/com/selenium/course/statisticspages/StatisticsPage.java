@@ -29,11 +29,11 @@ public class StatisticsPage extends BasePage {
 
 
 
-//        FluentWait fluentWait = new FluentWait(driver)
-//                .withTimeout(Duration.ofSeconds(15))
-//                .ignoring(NoSuchElementException.class);
-//
-//        fluentWait.until(ExpectedConditions.visibilityOf(statisticsBar));
+        FluentWait fluentWait = new FluentWait(driver)
+                .withTimeout(Duration.ofSeconds(15))
+                .ignoring(NoSuchElementException.class);
+
+        fluentWait.until(ExpectedConditions.visibilityOf(statisticsBar));
         statisticsBar.click();
 
         log.info("Actual Price Book is: " + priceBook.getText());
