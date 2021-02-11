@@ -1,6 +1,7 @@
 package com.selenium.course.statisticspages;
 
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,13 +29,15 @@ public class StatisticsPage extends BasePage {
     public void StatisticsPage(String priceBookField){
 
 
-
         FluentWait fluentWait = new FluentWait(driver)
                 .withTimeout(Duration.ofSeconds(15))
                 .ignoring(NoSuchElementException.class);
 
         fluentWait.until(ExpectedConditions.visibilityOf(statisticsBar));
         statisticsBar.click();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("return window.stop");
 
         log.info("Actual Price Book is: " + priceBook.getText());
         SoftAssert softAssert = new SoftAssert();
